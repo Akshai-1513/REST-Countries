@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:300,regular,500,600,700,800,900"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search"
+    />
+
+    <title>REST Countries</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+    </script>
+
+    <div class="search-and-filter">
+      <div class="search-container">
+        <span class="material-symbols-outlined">search</span>
+        <input type="search" placeholder="Search for a country..." />
+      </div>
+
+      <label for="sort-by" aria-label="Sort by"></label>
+      <select id="sort-by" class="filter">
+        <option value="" disabled selected>Sort by</option>
+        <option value="a-z">A-Z</option>
+        <option value="z-a">Z-A</option>
+        <option value="least-population">least-population</option>
+        <option value="most-population">most-population</option>
+      </select>
+
+      <label for="filter-select" aria-label="Filter by Region"></label>
+      <select id="filter-select" class="filter">
+        <option value="" disabled selected>Filter by Region</option>
+        <option value="Africa">Africa</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="North-America">North America</option>
+        <option value="South-America">South America</option>
+        <option value="Antartica">Antartica</option>
+        <option value="Oceania">Oceania/Australia</option>
+      </select>
+    </div>
+
+    <div id="details-overlay" class="overlay hidden">
+      <div class="details-modal">
+        <button class="close-btn" id="close-details">✕</button>
+
+        <div class="details-content">
+          <div class="details-image">
+            <img id="details-flag" alt="Country flag" />
+          </div>
+
+          <div class="details-info">
+            <h2 id="details-name"></h2>
+
+            <p><strong>Capital:</strong> <span id="details-capital"></span></p>
+            <p><strong>Region:</strong> <span id="details-region"></span></p>
+            <p>
+              <strong>Subregion:</strong> <span id="details-subregion"></span>
+            </p>
+            <p>
+              <strong>Population:</strong> <span id="details-population"></span>
+            </p>
+            <p>
+              <strong>Languages:</strong> <span id="details-languages"></span>
+            </p>
+            <p>
+              <strong>Currencies:</strong> <span id="details-currencies"></span>
+            </p>
+            <p><strong>CCA2:</strong> <span id="details-cca2"></span></p>
+            <p><strong>CCA3:</strong> <span id="details-cca3"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
